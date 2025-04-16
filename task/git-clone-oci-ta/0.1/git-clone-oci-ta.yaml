@@ -272,6 +272,7 @@ spec:
         if [ "${PARAM_MERGE_TARGET_BRANCH}" = "true" ]; then
           echo "Merge option enabled. Attempting to merge target branch '${PARAM_TARGET_BRANCH}' into HEAD (${RESULT_SHA})."
           echo "Fetching target branch '${PARAM_TARGET_BRANCH}'..."
+          git submodule update --init --recursive
           git fetch origin "${PARAM_TARGET_BRANCH}"
           FETCH_EXIT_CODE="$?"
           if [ "${FETCH_EXIT_CODE}" != "0" ]; then
